@@ -50,16 +50,15 @@ export const useFetch = (url: string, options: FetchOptions) => {
 
   useEffect(() => {
     fetchData()
-  }, [url, options])
+  }, [url, JSON.stringify(options)])
 
-  // Revalidate on focus
   useEffect(() => {
     if (revalidateOnFocus) {
       const handleFocus = () => fetchData()
       window.addEventListener('focus', handleFocus)
       return () => window.removeEventListener('focus', handleFocus)
     }
-  }, [url, options, revalidateOnFocus])
+  }, [url, revalidateOnFocus])
 
   return { data, error, loading, isError }
 }

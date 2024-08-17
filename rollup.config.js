@@ -1,15 +1,14 @@
-import json from '@rollup/plugin-json'
-import terser from '@rollup/plugin-terser'
-import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
+import babel from '@rollup/plugin-babel'
+import terser from '@rollup/plugin-terser'
+import json from '@rollup/plugin-json'
 
-// eslint-disable-next-line no-undef
 const devMode = process.env.NODE_ENV === 'development'
 
 export default {
-  input: 'src/index.ts', // TypeScript entry file
+  input: 'src/index.ts',
   output: [
     {
       file: 'dist/index.js',
@@ -19,14 +18,17 @@ export default {
   ],
   plugins: [
     json(),
-    resolve(),
+    resolve({
+      browser: true,
+      preferBuiltins: false
+    }),
     commonjs(),
-    typescript(), // TypeScript plugin
+    typescript(),
     babel({
-      extensions: ['.js', '.jsx', '.ts', '.tsx'], // Transpile TypeScript and JavaScript
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
       exclude: 'node_modules/**',
       babelHelpers: 'runtime',
-      presets: ['@babel/preset-react'],
+      presets: ['@babel/preset-env', '@babel/preset-react'],
       plugins: ['@babel/plugin-transform-runtime']
     }),
     terser({
