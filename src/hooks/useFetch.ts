@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { FetchOptions } from '../types'
 import { cacheFetcher } from '../core'
-import { useConfig } from '../context/ConfigContext'
+import { useConfig } from '../context'
 
 export const useFetch = (url: string, options: FetchOptions) => {
   const config = useConfig()
