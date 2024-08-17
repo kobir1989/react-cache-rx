@@ -1,3 +1,4 @@
+import json from '@rollup/plugin-json'
 import terser from '@rollup/plugin-terser'
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
@@ -17,6 +18,7 @@ export default {
     }
   ],
   plugins: [
+    json(),
     resolve(),
     commonjs(),
     typescript(), // TypeScript plugin

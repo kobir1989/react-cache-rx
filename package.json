@@ -1,7 +1,7 @@
 {
   "name": "react-cache-library",
   "version": "1.0.0",
-  "description": "",
+  "description": "A library for managing data fetching and caching in React applications.",
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
@@ -14,8 +14,26 @@
     "prepare": "husky install"
   },
   "author": "Kabir Hossain",
+  "keywords": [
+    "React",
+    "data-fetching",
+    "caching",
+    "hooks",
+    "useFetch",
+    "useMutation",
+    "state-management",
+    "API",
+    "axios",
+    "fetch",
+    "context",
+    "performance",
+    "error-handling",
+    "async",
+    "custom-hooks"
+  ],
   "license": "MIT",
   "dependencies": {
+    "@rollup/plugin-json": "^6.1.0",
     "axios": "^1.7.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
