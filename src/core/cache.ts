@@ -1,8 +1,12 @@
-import { FetchOptions } from '../types'
+import { ConfigOptions, FetchOptions } from '../types'
 import { fetcher } from './fetcher'
 import { deleteCacheEntry, getCacheEntry, setCacheEntry } from './indexDB'
 
-export const cacheFetcher = async (url: string, options: FetchOptions) => {
+export const cacheFetcher = async (
+  url: string,
+  options: FetchOptions,
+  configOptions: ConfigOptions
+) => {
   const cacheDuration = options.cacheDuration || 30000 // Default to 30 seconds
 
   // Try to get data from IndexedDB
@@ -23,9 +27,10 @@ export const cacheFetcher = async (url: string, options: FetchOptions) => {
     headers: options?.headers,
     params: options?.params,
     timeout: options?.timeout || 1000,
-    responseType: options?.responseType
+    responseType: options?.responseType,
+    ...configOptions
   })
-  const data = await response.json()
+  const data = await response
 
   // Store the data with the current timestamp
   await setCacheEntry(url, data)

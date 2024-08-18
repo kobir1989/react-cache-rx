@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
 
 interface Callbacks<T = unknown> {
-  onSuccess?: (data: T) => void
-  onError?: (error: Error) => void
-  onSettled?: (data: T | null, error: Error | null) => void
+  onSuccess?: (_data: T) => void
+  onError?: (_error: Error) => void
+  onSettled?: (_data: T | null, _error: Error | null) => void
 }
 
 interface Options {
@@ -12,6 +12,7 @@ interface Options {
   token?: string
   responseType?: 'json' | 'text' | 'blob' | 'document' | 'arraybuffer'
   timeout?: number
+  baseUrl?: string
 }
 
 export interface FetchOptions<T = unknown> extends Callbacks<T>, Options {

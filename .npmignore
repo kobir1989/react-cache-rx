@@ -6,3 +6,4 @@ tsconfig.json
 .prettierignore
 .eslintrc.json
 .eslintignore
+.vscode
