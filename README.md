@@ -7,13 +7,13 @@ The `useFetch` hook is a custom React hook designed for fetching data, caching r
 First, install the library:
 
 ```bash
-npm install your-library-name
+npm install fetch-cache-rx
 
 ```
 
 ```js
 import React from 'react'
-import { useFetch } from 'your-library-name'
+import { useFetch } from 'fetch-cache-rx'
 
 const MyComponent = () => {
   const { data, error, loading, isError, fetchData } = useFetch('/api/data', {
@@ -58,10 +58,11 @@ To use the `useFetch` hook, you need to wrap your component tree with the `Confi
 The ConfigProvider allows you to set global configurations that will apply across your entire application. This is useful for settings like baseUrl, authentication tokens, default headers, and more.
 
 ### Basic Example
+
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ConfigProvider } from 'your-library-name'
+import { ConfigProvider } from 'fetch-cache-rx'
 import App from './App'
 
 const config = {
@@ -76,6 +77,7 @@ ReactDOM.render(
   document.getElementById('root')
 )
 ```
+
 ## Available Configuration Options
 
 The `ConfigProvider` allows you to configure your requests globally, similar to how you would with Axios. Here are all the available configuration options you can set:
@@ -93,7 +95,6 @@ The `ConfigProvider` allows you to configure your requests globally, similar to 
 - **onRequestSuccess**: (optional) Callback function triggered when a request succeeds.
 - **onRequestEnd**: (optional) Callback function triggered at the end of a request.
 
-
 ### Advanced Configuration Example
 
 ```js
@@ -102,7 +103,7 @@ const config = {
   token: 'your-token',
   defaultHeaders: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer your-token`,
+    Authorization: `Bearer your-token`
   },
   timeout: 5000, // in milliseconds
   withCredentials: true,
@@ -110,23 +111,23 @@ const config = {
   xsrfCookieName: 'MY-XSRF-TOKEN',
   xsrfHeaderName: 'MY-X-XSRF-TOKEN',
   onRequestStart: (url, options) => {
-    console.log(`Starting request to ${url} with options:`, options);
+    console.log(`Starting request to ${url} with options:`, options)
   },
-  onRequestError: (error) => {
-    console.error('Request failed:', error);
+  onRequestError: error => {
+    console.error('Request failed:', error)
   },
-  onRequestSuccess: (response) => {
-    console.log('Request succeeded:', response);
+  onRequestSuccess: response => {
+    console.log('Request succeeded:', response)
   },
   onRequestEnd: () => {
-    console.log('Request ended');
-  },
-};
+    console.log('Request ended')
+  }
+}
 
 ReactDOM.render(
   <ConfigProvider config={config}>
     <App />
   </ConfigProvider>,
   document.getElementById('root')
-);
+)
 ```
