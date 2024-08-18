@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "jsx": "react",
-    "jsx": "react",
-    "jsx": "react",
     "target": "ES2022",
     "allowJs": true,
     "skipLibCheck": true,

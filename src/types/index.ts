@@ -42,13 +42,3 @@ export interface ContextProviderProps {
   children: ReactNode
   config: ConfigOptions
 }
-
-export interface ErrorBoundaryProps {
-  children: ReactNode
-  fallback?: ReactNode
-}
-
-export interface ErrorBoundaryState {
-  hasError: boolean
-  error: Error | null
-}

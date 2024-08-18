@@ -1,26 +1,20 @@
 import { FetchOptions } from '../types'
 import { fetcher } from './fetcher'
-
-interface CacheEntry {
-  data: unknown
-  timestamp: number
-}
-
-export const cache = new Map<string, CacheEntry>()
+import { deleteCacheEntry, getCacheEntry, setCacheEntry } from './indexDB'
 
 export const cacheFetcher = async (url: string, options: FetchOptions) => {
   const cacheDuration = options.cacheDuration || 30000 // Default to 30 seconds
 
-  if (cache.has(url)) {
-    const cacheEntry = cache.get(url)!
-    const currentTime = Date.now()
+  // Try to get data from IndexedDB
+  const cachedEntry = await getCacheEntry(url)
 
-    // Check if the cached data is still valid
-    if (currentTime - cacheEntry.timestamp < cacheDuration) {
-      return cacheEntry.data
+  if (cachedEntry) {
+    const currentTime = Date.now()
+    if (currentTime - cachedEntry.timestamp < cacheDuration) {
+      return cachedEntry.data
     } else {
-      // If the cache has expired, clear it
-      cache.delete(url)
+      // Cache is expired
+      await deleteCacheEntry(url)
     }
   }
 
@@ -34,11 +28,7 @@ export const cacheFetcher = async (url: string, options: FetchOptions) => {
   const data = await response.json()
 
   // Store the data with the current timestamp
-  cache.set(url, { data, timestamp: Date.now() })
+  await setCacheEntry(url, data)
 
   return data
-}
-
-export const clearCache = (url: string) => {
-  cache.delete(url)
 }
