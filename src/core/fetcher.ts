@@ -9,7 +9,7 @@ export const fetcher = async (url: string, options: FetchOptions) => {
       ...(options.headers || {}),
       ...(options?.token ? { Authorization: `Bearer ${options.token}` } : {})
     },
-    params: options?.params,
+    // params: options?.params,
     timeout: options.timeout || 1000,
     responseType: options?.responseType || options.responseType || 'json'
   }

@@ -2,7 +2,7 @@ import { DB_NAME, STORE_NAME } from '../constants'
 
 const openDatabase = async () => {
   return new Promise<IDBDatabase>((resolve, reject) => {
-    const request = indexedDB.open(DB_NAME, 3) // Ensure version is correctly incremented
+    const request = indexedDB.open(DB_NAME, 3)
 
     request.onupgradeneeded = () => {
       const db = request.result

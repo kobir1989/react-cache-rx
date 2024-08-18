@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { FetchOptions } from '../types'
-import { cacheFetcher } from '../core'
+import { cacheFetcher, deleteCacheEntry } from '../core'
 import { useConfig } from '../context'
 
 export const useFetch = (url: string, options: FetchOptions) => {
@@ -16,6 +16,8 @@ export const useFetch = (url: string, options: FetchOptions) => {
     retries = 3,
     retryDelay = 4000,
     cacheDuration,
+    isInvalidate,
+    isFetchOnClick = false,
     ...otherOptions
   } = options
   const fetchData = async (attempt = 1) => {
@@ -52,8 +54,14 @@ export const useFetch = (url: string, options: FetchOptions) => {
   }
 
   useEffect(() => {
-    fetchData()
-  }, [url, retries, retryDelay, cacheDuration])
+    if (isInvalidate) {
+      deleteCacheEntry(url)
+      fetchData()
+    }
+    if (!isFetchOnClick) {
+      fetchData()
+    }
+  }, [url, retries, retryDelay, cacheDuration, isFetchOnClick, isInvalidate])
 
   useEffect(() => {
     if (revalidateOnFocus) {
@@ -63,5 +71,5 @@ export const useFetch = (url: string, options: FetchOptions) => {
     }
   }, [revalidateOnFocus])
 
-  return { data, error, loading, isError }
+  return { data, error, loading, isError, fetchData }
 }

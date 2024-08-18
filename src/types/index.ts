@@ -8,7 +8,7 @@ interface Callbacks<T = unknown> {
 
 interface Options {
   headers?: HeaderType
-  params?: string | Record<string, string>
+  // params?: string | Record<string, string>
   token?: string
   responseType?: 'json' | 'text' | 'blob' | 'document' | 'arraybuffer'
   timeout?: number
@@ -20,6 +20,8 @@ export interface FetchOptions<T = unknown> extends Callbacks<T>, Options {
   revalidateOnFocus?: boolean
   retries?: number
   retryDelay?: number
+  isFetchOnClick?: boolean
+  isInvalidate?: boolean
 }
 
 export interface MutateOptions<T = unknown> extends Callbacks<T>, Options {

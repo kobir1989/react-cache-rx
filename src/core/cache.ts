@@ -25,7 +25,7 @@ export const cacheFetcher = async (
   // Fetch new data if cache is empty or expired
   const response = await fetcher(url, {
     headers: options?.headers,
-    params: options?.params,
+    // params: options?.params,
     timeout: options?.timeout || 1000,
     responseType: options?.responseType,
     ...configOptions
