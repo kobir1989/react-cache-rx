@@ -7,7 +7,7 @@ The `useFetch` hook is a custom React hook designed for fetching data, caching r
 First, install the library:
 
 ```bash
-npm install your-library-name
+npm install fetch-cache-rx
 
 ```
 
