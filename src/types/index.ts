@@ -25,8 +25,10 @@ export interface FetchOptions<T = unknown> extends Callbacks<T>, Options {
   isInvalidate?: boolean
 }
 
+export type MutationMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH'
+
 export interface MutateOptions<T = unknown> extends Callbacks<T>, Options {
-  method?: 'POST' | 'DELETE' | 'PUT'
+  method?: MutationMethod
   body?: unknown
 }
 
