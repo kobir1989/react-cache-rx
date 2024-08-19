@@ -157,7 +157,7 @@ Here's a basic example of how to use the `useMutation` hook to create a new reso
 
 ```js
 import React from 'react'
-import { useMutation } from 'your-library-name'
+import { useMutation } from 'fetch-cache-rx'
 
 const MyComponent = () => {
   const { mutate, data, error, loading } = useMutation(
