@@ -146,3 +146,44 @@ export default MyComponent
 | **onSuccess**         | (optional) Callback function called when data is successfully fetched.                                    |                      |
 | **onError**           | (optional) Callback function called when an error occurs during fetching.                                 |                      |
 | **onSettled**         | (optional) Callback function called after the fetch attempt completes, regardless of success or failure.  |                      |
+
+## `useMutation` Hook
+
+The `useMutation` hook is a custom React hook designed to handle `POST`, `PUT`, and `DELETE` requests. It simplifies the process of performing these operations by managing loading, error, and success states, while also allowing for easy configuration and customization.
+
+### Basic Example
+
+Here's a basic example of how to use the `useMutation` hook to create a new resource using a `POST` request:
+
+```js
+import React from 'react'
+import { useMutation } from 'your-library-name'
+
+const MyComponent = () => {
+  const { mutate, data, error, loading } = useMutation(
+    '/api/resource',
+    'POST',
+    {
+      onSuccess: data => console.log('Mutation successful:', data),
+      onError: error => console.error('Mutation failed:', error)
+    }
+  )
+
+  const handleSubmit = () => {
+    const payload = { name: 'New Resource' }
+    mutate(payload)
+  }
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error: {error.message}</p>
+
+  return (
+    <div>
+      <button onClick={handleSubmit}>Create Resource</button>
+      {data && <p>Resource created: {JSON.stringify(data)}</p>}
+    </div>
+  )
+}
+
+export default MyComponent
+```
