@@ -27,6 +27,13 @@ export interface FetchOptions<T = unknown> extends Callbacks<T>, Options {
 
 export type MutationMethod = 'POST' | 'PUT' | 'DELETE' | 'PATCH'
 
+export type ResponseType =
+  | 'json'
+  | 'text'
+  | 'blob'
+  | 'document'
+  | 'arraybuffer'
+  | 'stream'
 export interface MutateOptions<T = unknown> extends Callbacks<T>, Options {
   method?: MutationMethod
   body?: unknown
@@ -41,13 +48,6 @@ export interface ConfigOptions {
   token?: string
   headers?: Record<string, string>
   timeout?: number
-  responseType?:
-    | 'json'
-    | 'text'
-    | 'blob'
-    | 'document'
-    | 'arraybuffer'
-    | 'stream'
   withCredentials?: boolean
   xsrfCookieName?: string
   xsrfHeaderName?: string
