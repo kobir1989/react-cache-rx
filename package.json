@@ -1,5 +1,5 @@
 {
-  "name": "react-cache-library",
+  "name": "react-cache-rx",
   "version": "1.0.0",
   "description": "A library for managing data fetching and caching in React applications.",
   "main": "dist/index.js",
@@ -14,6 +14,10 @@
     "prepare": "husky install"
   },
   "author": "Kabir Hossain",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kobir1989/react-cache-rx"
+  },
   "keywords": [
     "React",
     "data-fetching",

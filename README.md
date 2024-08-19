@@ -1,19 +1,17 @@
 # react-cache-rx
 
-![npm version](https://img.shields.io/badge/npm-v1.0.0-blue)
+![npm version](https://img.shields.io/badge/npm-v1.0.1-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
-![Downloads](https://img.shields.io/npm/dt//react-cache)
-![GitHub stars](https://img.shields.io/github/stars/kobir1989/react-cache)
-![GitHub forks](https://img.shields.io/github/forks/kobir1989/react-cache)
-![GitHub issues](https://img.shields.io/github/issues/kobir1989/react-cache)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/kobir1989/react-cache)
+![Downloads](https://img.shields.io/npm/dt/react-cache-rx)
+![GitHub stars](https://img.shields.io/github/stars/kobir1989/react-cache-rx)
+![GitHub forks](https://img.shields.io/github/forks/kobir1989/react-cache-rx)
+![GitHub issues](https://img.shields.io/github/issues/kobir1989/react-cache-rx)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/kobir1989/react-cache-rx)
 ![Maintenance](https://img.shields.io/maintenance/yes/2024)
 
-The `react-cache-rx` library provides a custom hook, `useFetch()`, which is designed for data fetching, response caching, retry handling, and managing loading and error states. It leverages IndexedDB for caching and offers a range of options for flexible integration.
+The `react-cache-rx` library provides powerful custom hooks, `useFetch()` and `useMutation()`, for efficient data fetching, response caching, and seamless management of retries, loading states, and error handling. Supporting HTTP methods such as POST, DELETE, and PUT, this library leverages IndexedDB for robust caching and offers a comprehensive set of options for easy and flexible integration into your React applications.
 
 ## Installation
-
-First, install the library:
 
 ```bash
 npm install fetch-cache-rx
@@ -47,7 +45,7 @@ ReactDOM.render(
 )
 ```
 
-## Available Configuration Options
+### Available Configuration Options
 
 The `ConfigProvider` allows you to configure your requests globally, similar to how you would with Axios. Here are all the available configuration options you can set:
 
@@ -102,7 +100,7 @@ ReactDOM.render(
 )
 ```
 
-# `useFetch` Hook
+### `useFetch` Hook
 
 ```js
 import React from 'react'
@@ -132,7 +130,7 @@ const MyComponent = () => {
 export default MyComponent
 ```
 
-## Options Properties
+### Options Properties
 
 | Option                | Description                                                                                               | Default              |
 | --------------------- | --------------------------------------------------------------------------------------------------------- | -------------------- |
@@ -146,7 +144,7 @@ export default MyComponent
 | **onError**           | (optional) Callback function called when an error occurs during fetching.                                 |                      |
 | **onSettled**         | (optional) Callback function called after the fetch attempt completes, regardless of success or failure.  |                      |
 
-## `useMutation` Hook
+### `useMutation` Hook
 
 The `useMutation` hook is a custom React hook designed to handle `POST`, `PUT`, and `DELETE` requests. It simplifies the process of performing these operations by managing loading, error, and success states, while also allowing for easy configuration and customization.
 
